@@ -5,7 +5,7 @@ length = .32; %m average length
 mass = .35; %kg mass based on 11g per cm density
 gravity = 9.8; %m/s^2
 angle = 35 * pi / 180; %assuming angle, convert to radians
-r = .08; %assuming cm is a third of the way in from handle
+r = length*0.25; %assuming cm is a third of the way in from handle
 A = .32; %cross sectional area cutting through air
 
 x = E(1);
