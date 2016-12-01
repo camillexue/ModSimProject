@@ -1,4 +1,4 @@
-function res = plottingknife()
+function res = plottingknife(klength,force)
 clf
 x_o = 0;
 y_o = 1.7;
@@ -6,8 +6,8 @@ Vx_o = 0;
 Vy_o = 0;
 W_o = 0;
 theta_o = 32.*pi./180;
-length = .32; %m average length
-r = length*.25; %assuming cm is a fourth of the way in from handle
+klength = .32; %m average length
+r = klength*.25; %assuming cm is a fourth of the way in from handle
 target = 6;
 
 E_o = [x_o; y_o; Vx_o; Vy_o; W_o; theta_o];
@@ -17,15 +17,15 @@ options = odeset('Events', @events, 'RelTol', 1e-4);
 X = E(:,1);
 Y = E(:,2);
 theta = E(:,6);
-tx = (length-r) * cos(theta) + X;
-ty = (length-r) * sin(theta) + Y;
+tx = (klength-r) * cos(theta) + X;
+ty = (klength-r) * sin(theta) + Y;
 hx = X - (r) * cos(theta);
 hy = Y - (r) * sin(theta);
 
 function [value,isterminal,direction] = events(~, E)
     X = E(1);
     theta = E(6);
-    tx = (length-r) * cos(theta) + X;
+    tx = (klength-r) * cos(theta) + X;
     hx = (r) * cos(theta) + X;
     value = [tx-target; hx-target];
     isterminal = [1;1];
