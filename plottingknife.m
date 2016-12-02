@@ -1,14 +1,16 @@
-function res = plottingknife(klength,force)
+function res = plottingknife()
 clf
 x_o = 0;
 y_o = 1.7;
-Vx_o = 0;
-Vy_o = 0;
-W_o = 0;
-theta_o = 32.*pi./180;
+V_o = 12;
+theta_o = 10.*pi./180;
+Vx_o = V_o * cos(theta_o);
+Vy_o = V_o * sin(theta_o);
+W_o = 12;
+theta_o = 35.*pi./180;
 klength = .32; %m average length
 r = klength*.25; %assuming cm is a fourth of the way in from handle
-target = 6;
+target = 4;
 
 E_o = [x_o; y_o; Vx_o; Vy_o; W_o; theta_o];
 
@@ -24,18 +26,23 @@ hy = Y - (r) * sin(theta);
 
 function [value,isterminal,direction] = events(~, E)
     X = E(1);
+    Y = E(2);
     theta = E(6);
+    ty = (klength-r) * sin(theta) + Y;
     tx = (klength-r) * cos(theta) + X;
     hx = (r) * cos(theta) + X;
-    value = [tx-target; hx-target];
-    isterminal = [1;1];
-    direction = [1;1];
+    hy = Y - (r) * sin(theta);
+    
+    value = [tx-target; hx-target; ty; hy;];
+    isterminal = [1;1;1;1];
+    direction = [1;1;1;1];
 end
 
 hold on
 plot(X, Y, 'g');
 plot(tx, ty, 'r');
 plot(hx, hy, 'b');
+plot(T,Y);
 line([target, target + .01], [0.6, 1.7]);
 xlabel('horizontal position (m)')
 ylabel('vertical position (m)')

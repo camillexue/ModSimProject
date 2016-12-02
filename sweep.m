@@ -1,19 +1,22 @@
 clf
-klength = 20:0.1:40;
-force = 20:0.1:50;
+V_o = 10:1:14; %m/s
+W_o = 10:.1:15;
 
-num_lengths = length(klength);
-num_forces = klength(force);
-theta_end = zeros(num_lengths, num_forces);
+num_linear = length(V_o);
+num_angular = length(W_o);
+hit = zeros(num_linear, num_angular);
 
-for row = 1:num_lengths
-    for column = 1:num_forces
-        theta_end(row, column) = test(klength(row), force(column));
+for row = 1:num_linear
+    for column = 1:num_angular
+        hit(row, column) = test(V_o(row), W_o(column));
     end
 end
 
-pcolor(force, klength, theta_end)
-shading interp
-colorbar
+mymap = [.8,0,0;0,.8,0];
+pcolor(W_o, V_o, hit)
+colormap(mymap);
+xlabel('Linear Velocity');
+ylabel('Angular Velocity');
+title('Throwing Velocity and Throwing Success');
 
 hold on
