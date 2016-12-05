@@ -15,8 +15,8 @@ end
 mymap = [0,0,1;1,1,0;1,0,0;0,.8,0];
 pcolor(W_o, V_o, hit)
 colormap(mymap);
-xlabel('Linear Velocity');
-ylabel('Angular Velocity');
+xlabel('Angular Velocity');
+ylabel('Linear Velocity');
 title('Throwing Velocity and Throwing Success');
 colorbar
 
