@@ -62,6 +62,10 @@ dWdt = 0;
 res = [dxdt; dydt; dVxdt; dVydt; dWdt; dthetadt];
 end
     if tx(end) > hx(end) && ty(end) >= .6 && ty(end) <= 1.7
+        hit = 3;
+    elseif ty(end) <= .6
+        hit = 2;
+    elseif ty(end) >= 1.7
         hit = 1;
     else
         hit = 0;

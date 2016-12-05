@@ -42,7 +42,6 @@ hold on
 plot(X, Y, 'g');
 plot(tx, ty, 'r');
 plot(hx, hy, 'b');
-plot(T,Y);
 line([target, target + .01], [0.6, 1.7]);
 xlabel('horizontal position (m)')
 ylabel('vertical position (m)')
