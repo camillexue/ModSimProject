@@ -63,12 +63,14 @@ res = [dxdt; dydt; dVxdt; dVydt; dWdt; dthetadt];
 end
     if tx(end) > hx(end) && ty(end) >= 1.515 && ty(end) <= 1.676
         hit = 3;
+    elseif tx(end) < hx(end) && ty(end) >= 1.515 && ty(end) <= 1.676
+        hit = 0;
     elseif ty(end) <= 1.515
         hit = 2;
     elseif ty(end) >= 1.676
         hit = 1;
     else
-        hit = 0;
+        hit = 2;
     end
     res = hit;
 end
