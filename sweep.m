@@ -1,6 +1,6 @@
 clf
-V_o = 5:.5:20; %m/s
-W_o = 5:.5:20;
+V_o = 0:.5:16; %m/s
+W_o = 0:.5:20;
 
 num_linear = length(V_o);
 num_angular = length(W_o);
@@ -15,8 +15,8 @@ end
 mymap = [0,0,1;1,1,0;1,0,0;0,.8,0];
 pcolor(W_o, V_o, hit)
 colormap(mymap);
-xlabel('Angular Velocity');
-ylabel('Linear Velocity');
+xlabel('Initial Angular Velocity (m/s)');
+ylabel('Initial Linear Velocity (m/s)');
 title('Throwing Velocity and Throwing Success');
 colorbar
 

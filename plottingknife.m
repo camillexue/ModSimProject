@@ -2,11 +2,11 @@ function res = plottingknife()
 clf
 x_o = 0;
 y_o = 1.7;
-V_o = 12;
+V_o = 11;
 theta_o = 10.*pi./180;
 Vx_o = V_o * cos(theta_o);
 Vy_o = V_o * sin(theta_o);
-W_o = 12;
+W_o = 15;
 theta_o = 35.*pi./180;
 klength = .32; %m average length
 r = klength*.25; %assuming cm is a fourth of the way in from handle
@@ -39,12 +39,11 @@ function [value,isterminal,direction] = events(~, E)
 end
 
 hold on
-plot(X, Y, 'g');
-plot(tx, ty, 'r');
-plot(hx, hy, 'b');
-line([target, target + .01], [0.6, 1.7]);
+plot(T, Y, 'g');
+plot(T, ty, 'r');
+plot(T, hy, 'b');
+line([target, target + .01], [1.515, 1.676]);
 xlabel('horizontal position (m)')
 ylabel('vertical position (m)')
 title('vertical position v. horizontal position')
-
 end

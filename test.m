@@ -8,7 +8,7 @@ function res = test(V_o, W_o)
     klength = .32; %m length of knife
     
     r = klength*.25; %assuming cm is a fourth of the way in from handle
-    target = 6;
+    target = 4;
 
     E_o = [x_o; y_o; Vx_o; Vy_o; W_o; theta_o];
 
@@ -61,16 +61,14 @@ dWdt = 0;
 
 res = [dxdt; dydt; dVxdt; dVydt; dWdt; dthetadt];
 end
-    if tx(end) > hx(end) && ty(end) >= .6 && ty(end) <= 1.7
+    if tx(end) > hx(end) && ty(end) >= 1.515 && ty(end) <= 1.676
         hit = 3;
-    elseif ty(end) <= .6
+    elseif ty(end) <= 1.515
         hit = 2;
-    elseif ty(end) >= 1.7
+    elseif ty(end) >= 1.676
         hit = 1;
     else
         hit = 0;
     end
     res = hit;
 end
-
-
